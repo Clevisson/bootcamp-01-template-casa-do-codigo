@@ -1,26 +1,34 @@
 package com.clevisson.casadocodigo.controller;
 
+import com.clevisson.casadocodigo.newAuthorRequest;
+import com.clevisson.casadocodigo.ValidateDuplicateEmail;
 import com.clevisson.casadocodigo.model.Author;
-import com.clevisson.casadocodigo.repository.AuthorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
+
 @RestController
-@RequestMapping(path = "/author")
 public class AuthorController {
-
-    private final AuthorRepository authorRepository;
-
-    public AuthorController(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
+    @PersistenceContext
+    private EntityManager manager;
+    @Autowired
+    private ValidateDuplicateEmail validateDuplicateEmail;
+    @InitBinder
+    public void init(WebDataBinder binder) {
+        binder.addValidators(validateDuplicateEmail);
     }
 
-    @PostMapping
-    public Author createAuthor(@RequestBody Author author) {
-        return authorRepository.save(author);
+    @PostMapping(path = "create/author")
+    @Transactional
+    public String createAuthor(@RequestBody @Valid newAuthorRequest request) {
+        Author author = request.toModel();
+        manager.persist(author);
+        return author.toString();
     }
 
-    @GetMapping
-    public Iterable<Author> listAuthors() {
-        return authorRepository.findAll();
-    }
 }
