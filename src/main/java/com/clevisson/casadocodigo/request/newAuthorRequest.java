@@ -1,6 +1,8 @@
-package com.clevisson.casadocodigo;
+package com.clevisson.casadocodigo.request;
 
 import com.clevisson.casadocodigo.model.Author;
+import com.clevisson.casadocodigo.validations.UniqueValue;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,6 +13,7 @@ public class newAuthorRequest {
     private final String name;
     @NotBlank
     @Email
+    @UniqueValue(domainClass = Author.class, fieldName = "email")
     private final String email;
     @NotBlank
     @Size(max = 400)

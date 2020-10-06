@@ -1,7 +1,7 @@
 package com.clevisson.casadocodigo.controller;
 
 import com.clevisson.casadocodigo.model.Category;
-import com.clevisson.casadocodigo.newCategoryRequest;
+import com.clevisson.casadocodigo.request.newCategoryRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

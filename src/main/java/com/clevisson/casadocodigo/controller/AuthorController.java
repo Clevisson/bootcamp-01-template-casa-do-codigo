@@ -1,10 +1,11 @@
 package com.clevisson.casadocodigo.controller;
 
-import com.clevisson.casadocodigo.newAuthorRequest;
-import com.clevisson.casadocodigo.ValidateDuplicateEmail;
+import com.clevisson.casadocodigo.request.newAuthorRequest;
 import com.clevisson.casadocodigo.model.Author;
+import com.clevisson.casadocodigo.validations.UniqueValueValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,11 +18,6 @@ public class AuthorController {
     @PersistenceContext
     private EntityManager manager;
     @Autowired
-    private ValidateDuplicateEmail validateDuplicateEmail;
-    @InitBinder
-    public void init(WebDataBinder binder) {
-        binder.addValidators(validateDuplicateEmail);
-    }
 
     @PostMapping(path = "create/author")
     @Transactional
