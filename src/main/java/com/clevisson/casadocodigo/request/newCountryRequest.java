@@ -1,16 +1,15 @@
 package com.clevisson.casadocodigo.request;
 
-import com.clevisson.casadocodigo.genericvalidation.UniqueId;
-import com.clevisson.casadocodigo.model.Category;
 import com.clevisson.casadocodigo.genericvalidation.UniqueValue;
+import com.clevisson.casadocodigo.model.Country;
 
 import javax.validation.constraints.NotBlank;
 
-public class newCategoryRequest {
-
+public class newCountryRequest {
     @NotBlank
-    @UniqueValue(domainClass = Category.class, fieldName = "name")
-    private String name;
+    @UniqueValue(domainClass = Country.class, fieldName = "name")
+    String name;
+
 
     public String getName() {
         return name;
@@ -19,6 +18,5 @@ public class newCategoryRequest {
     public void setName(String name) {
         this.name = name;
     }
+
 }
-
-

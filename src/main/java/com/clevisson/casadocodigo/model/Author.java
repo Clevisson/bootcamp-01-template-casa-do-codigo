@@ -14,22 +14,39 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "O nome não pode ser vazio")
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    @NotBlank
     private String name;
-    @NotBlank(message = "O email não pode ser vazio")
+    @NotBlank
     @Email
     private String email;
-    @NotBlank(message = "A descrição não pode ser vazia")
-    @Size(max = 400, message = "A descrição não pode conter mais de 400 caracteres")
+    @NotBlank
+    @Size(max = 400)
     private String description;
-    //@NotNull(message = "O instate da criação não pode nula")
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Deprecated
     public Author() {
     }
 
-    public Author(String name, String email, String description) {
+    public Author(@NotBlank String name, @NotBlank @Email String email, @NotBlank
+    @Size(max = 400) String description) {
         this.name = name;
         this.email = email;
         this.description = description;

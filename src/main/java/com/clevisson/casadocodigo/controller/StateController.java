@@ -1,8 +1,7 @@
 package com.clevisson.casadocodigo.controller;
 
-import com.clevisson.casadocodigo.model.Author;
-import com.clevisson.casadocodigo.request.newAuthorRequest;
-import org.springframework.transaction.annotation.Transactional;
+import com.clevisson.casadocodigo.model.State;
+import com.clevisson.casadocodigo.request.newStateRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,20 +9,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(path = "/author")
-public class AuthorController {
+@RequestMapping(path = "/state")
+public class StateController {
+
     @PersistenceContext
-    private EntityManager manager;
+    EntityManager manager;
 
     @PostMapping
     @Transactional
-    public String createAuthor(@RequestBody @Valid newAuthorRequest request) {
-        Author author = request.toModel();
-        manager.persist(author);
-        return author.toString();
+    public String createEstate(@RequestBody @Valid newStateRequest request) {
+        State state = request.toModel(manager);
+        manager.persist(state);
+        return "Salvei no banco";
     }
-
 }

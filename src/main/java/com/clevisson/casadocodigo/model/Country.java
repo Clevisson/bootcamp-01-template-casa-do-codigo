@@ -4,27 +4,23 @@ import com.clevisson.casadocodigo.genericvalidation.UniqueValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
-public class Category {
-
+public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotBlank
-    private String name;
+    long id;
+
+    @NotNull
+    String name;
 
     @Deprecated
-    public Category() {
+    public Country(){
     }
 
-
-    public Category(@NotBlank String name) {
+    public Country(@NotBlank String name){
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Categoria [id:" + id + ",nome:" + name + "]";
-    }
 }

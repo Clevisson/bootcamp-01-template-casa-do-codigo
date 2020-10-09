@@ -1,4 +1,4 @@
-package com.clevisson.casadocodigo.validations;
+package com.clevisson.casadocodigo.genericvalidation;
 
 import org.springframework.util.Assert;
 
