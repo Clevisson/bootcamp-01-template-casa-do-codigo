@@ -19,7 +19,7 @@ Essa estratégia pode reduzir a sobrecarga cognitiva dos desenvolvedores por mei
 (<https://github.com/asouza/pilares-design-codigo/blob/master/ICSME-2020-cognitive-driven-development.pdf>)
 
 ## Contributing
-1. Faça o _fork_ do projeto (<https://github.com/Clevisson/bootcamp-01-template-casa-do-codigo/tree/Clevisson/fork>)
+1. Faça o _fork_ do projeto (<https://github.com/Clevisson/bootcamp-01-template-casa-do-codigo/tree/Clevisson/>)
 2. Crie uma _branch_ para sua modificação (`git checkout -b feature/fooBar`)
 3. Faça o _commit_ (`git commit -am 'Add some fooBar'`)
 4. _Push_ (`git push origin feature/fooBar`)
